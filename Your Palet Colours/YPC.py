@@ -17,7 +17,7 @@
 # ##### END GPL LICENSE BLOCK #####
 
 # Informations
-bl_info = { "name": "Your Plette Color",
+bl_info = { "name": "Your Palette Color",
     "description": "",
     "author": "Almisuifre (aidé par Pistiwique, Wazou, Stilobique et Iscream",
     "version": (1,0,0),
