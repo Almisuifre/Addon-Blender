@@ -124,7 +124,7 @@ def get_default_palette_presets():
     }
     return presets
 
-# Fonctionqui est appeler au démarrage du script
+# Fonction qui est appeler au démarrage du script
 def setup():
     # Vérifier la présence du répertoire des presets
     preset_subdir = "your_palette_colour_presets"
@@ -187,6 +187,39 @@ def setup():
     #print(preset_directory) # Path
     #print("Finish !")
 
+# Fonction qui permet d'afficher le pannel de façon commune
+def PANNEL_MT_COMMUN(context, layout):
+    myPG = context.window_manager.myPropertyGroup
+    
+    # Le pannel
+    row = layout.row()
+    row.label("Your colours", icon = 'COLOR')
+    
+    col = layout.column(align = True)
+    
+    box = col.box().split(align = True)
+    box.prop(myPG, 'create_color1')
+    box.prop(myPG, 'create_color2')
+    box.prop(myPG, 'create_color3')
+    box.prop(myPG, 'create_color4')
+    box.prop(myPG, 'create_color5')
+    
+    box = col.box().split(align = True)
+    box.prop(myPG, 'create_color6')
+    box.prop(myPG, 'create_color7')
+    box.prop(myPG, 'create_color8')
+    box.prop(myPG, 'create_color9')
+    box.prop(myPG, 'create_color10')
+    
+    row = layout.row()
+    row.label("Options", icon = 'RNA_ADD')
+    
+    col = layout.column(align = True)
+    row = col.row(align = True)
+    row.menu("VIEW3D_MT_your_palette_presets", text = bpy.types.VIEW3D_MT_your_palette_presets.bl_label)
+    row.operator("scene.colours_preset_add", text = "", icon = 'ZOOMIN')
+    row.operator("scene.colours_preset_add", text = "", icon = 'ZOOMOUT').remove_active = True
+    
 # Classe d'édition de la couleur
 class ColorEditGroup(PropertyGroup):
     # Edition de la couleur 1 de base
@@ -329,38 +362,9 @@ class SimpleToolPanel_3D_VIEW(bpy.types.Panel):
     
     # Contenu de la fenêtre
     def draw(self, context):
-        myPG = context.window_manager.myPropertyGroup
         layout = self.layout
+        PANNEL_MT_COMMUN(context, layout)
         
-        # Le pannel
-        row = layout.row()
-        row.label("Your colours", icon = 'COLOR')
-        
-        col = layout.column(align = True)
-        
-        box = col.box().split(align = True)
-        box.prop(myPG, 'create_color1')
-        box.prop(myPG, 'create_color2')
-        box.prop(myPG, 'create_color3')
-        box.prop(myPG, 'create_color4')
-        box.prop(myPG, 'create_color5')
-        
-        box = col.box().split(align = True)
-        box.prop(myPG, 'create_color6')
-        box.prop(myPG, 'create_color7')
-        box.prop(myPG, 'create_color8')
-        box.prop(myPG, 'create_color9')
-        box.prop(myPG, 'create_color10')
-        
-        row = layout.row()
-        row.label("Options", icon = 'RNA_ADD')
-        
-        col = layout.column(align = True)
-        row = col.row(align = True)
-        row.menu("VIEW3D_MT_your_palette_presets", text = bpy.types.VIEW3D_MT_your_palette_presets.bl_label)
-        row.operator("scene.colours_preset_add", text = "", icon = 'ZOOMIN')
-        row.operator("scene.colours_preset_add", text = "", icon = 'ZOOMOUT').remove_active = True
-
 # Classe dérivée du Panel
 class SimpleToolPanel_NODE_EDITOR(bpy.types.Panel):
     bl_idname = 'Palette_Color_NE'
@@ -373,37 +377,8 @@ class SimpleToolPanel_NODE_EDITOR(bpy.types.Panel):
     
     # Contenu de la fenêtre
     def draw(self, context):
-        myPG = context.window_manager.myPropertyGroup
         layout = self.layout
-        
-        # Le pannel
-        row = layout.row()
-        row.label("Your colours", icon = 'COLOR')
-        
-        col = layout.column(align = True)
-        
-        box = col.box().split(align = True)
-        box.prop(myPG, 'create_color1')
-        box.prop(myPG, 'create_color2')
-        box.prop(myPG, 'create_color3')
-        box.prop(myPG, 'create_color4')
-        box.prop(myPG, 'create_color5')
-        
-        box = col.box().split(align = True)
-        box.prop(myPG, 'create_color6')
-        box.prop(myPG, 'create_color7')
-        box.prop(myPG, 'create_color8')
-        box.prop(myPG, 'create_color9')
-        box.prop(myPG, 'create_color10')
-        
-        row = layout.row()
-        row.label("Options", icon = 'RNA_ADD')
-        
-        col = layout.column(align = True)
-        row = col.row(align = True)
-        row.menu("VIEW3D_MT_your_palette_presets", text = bpy.types.VIEW3D_MT_your_palette_presets.bl_label)
-        row.operator("scene.colours_preset_add", text = "", icon = 'ZOOMIN')
-        row.operator("scene.colours_preset_add", text = "", icon = 'ZOOMOUT').remove_active = True
+        PANNEL_MT_COMMUN(context, layout)
 
 """
 # Gère cls
