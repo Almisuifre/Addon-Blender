@@ -181,26 +181,7 @@ def setup():
             with open(os.path.join(preset_directory, "{}.py".format(n)), mode = 'w',
             encoding = 'utf-8') as f: # Forçage à UTF-8
                 f.write(s)
-        
-        """
-        e = "\n"
-        for n, p in default_presets.items():
-            s = ""
-            s += "import bpy" + e
-            
-            for i in range(10):
-                s += "C"+format(i)+" = bpy.context.window_manager.myPropertyGroup"+e
-            s += e
-            for i in range(10):
-                d = i + 1   # Petit décallage du à la façont d'ont c'est codé
-                s += "C"+format(i)+".create_color"+format(d)+" = "
-                s += "("+format(p[i][0])+", "+format(p[i][1])+", "+format(p[i][2])+") "+e
-                  
-            # Ecrire le fichier 
-            with open(os.path.join(preset_directory, "{}.py".format(n)), mode = 'w',
-            encoding = 'utf-8') as f: # Forçage à UTF-8
-                f.write(s)
-          """
+                
     # Debug
     #print(i)
     #print(s) #Debug
@@ -346,34 +327,6 @@ class VIEW3D_OT_colours_preset_add(AddPresetBase, bpy.types.Operator):
         "C.create_color9",
         "C.create_color10",
     ]
-    
-    """
-    preset_defines = [
-        "C0 = bpy.context.window_manager.myPropertyGroup",
-        "C1 = bpy.context.window_manager.myPropertyGroup",
-        "C2 = bpy.context.window_manager.myPropertyGroup",
-        "C3 = bpy.context.window_manager.myPropertyGroup",
-        "C4 = bpy.context.window_manager.myPropertyGroup",
-        "C5 = bpy.context.window_manager.myPropertyGroup",
-        "C6 = bpy.context.window_manager.myPropertyGroup",
-        "C7 = bpy.context.window_manager.myPropertyGroup",
-        "C8 = bpy.context.window_manager.myPropertyGroup",
-        "C9 = bpy.context.window_manager.myPropertyGroup",
-    ]
-    
-    preset_values = [
-        "C0.create_color1",
-        "C1.create_color2",
-        "C2.create_color3",
-        "C3.create_color4",
-        "C4.create_color5",
-        "C5.create_color6",
-        "C6.create_color7",
-        "C7.create_color8",
-        "C8.create_color9",
-        "C9.create_color10",
-    ]
-    """
 
 # Classe qui fait apparaître le menu de sélection des presets
 class VIEW3D_MT_your_palette_presets(bpy.types.Menu):
