@@ -220,7 +220,7 @@ def PANNEL_MT_COMMUN(context, layout):
     row.menu("VIEW3D_MT_your_palette_presets", text = bpy.types.VIEW3D_MT_your_palette_presets.bl_label)
     row.operator("scene.colours_preset_add", text = "", icon = 'ZOOMIN')
     row.operator("scene.colours_preset_add", text = "", icon = 'ZOOMOUT').remove_active = True
-    
+
 # Classe d'édition de la couleur
 class ColorEditGroup(PropertyGroup):
     # Edition de la couleur 1 de base
