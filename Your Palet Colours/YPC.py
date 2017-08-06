@@ -350,7 +350,7 @@ class SimpleToolPanel_3D_VIEW(bpy.types.Panel):
     # Permet d'afficher la palette en mode Edit et en mode Objet
     @classmethod
     def poll(cls, context):
-        return context.mode in {'OBJECT', 'EDIT_MESH'}
+        return context.mode in {'OBJECT', 'EDIT_MESH', 'PAINT_WEIGHT', 'PAINT_VERTEX', 'PAINT_TEXTURE'}
     
     # Contenu de la fenêtre
     def draw(self, context):
